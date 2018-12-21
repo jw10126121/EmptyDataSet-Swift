@@ -23,8 +23,9 @@ private var kEmptyDataSetDelegate =         "emptyDataSetDelegate"
 private var kEmptyDataSetView =             "emptyDataSetView"
 private var kConfigureEmptyDataSetView =    "configureEmptyDataSetView"
 
-extension UIScrollView: UIGestureRecognizerDelegate {
-    
+extension UIScrollView {
+//    extension UIScrollView: UIGestureRecognizerDelegate {
+
     private var configureEmptyDataSetView: ((EmptyDataSetView) -> Void)? {
         get {
             return objc_getAssociatedObject(self, &kConfigureEmptyDataSetView) as? (EmptyDataSetView) -> Void
@@ -91,7 +92,7 @@ extension UIScrollView: UIGestureRecognizerDelegate {
                 view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
                 view.isHidden = true
                 let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(didTapContentView(_:)))
-                tapGesture.delegate = self
+//                tapGesture.delegate = self
                 view.addGestureRecognizer(tapGesture)
                 view.button.addTarget(self, action: #selector(didTapDataButton(_:)), for: .touchUpInside)
 
